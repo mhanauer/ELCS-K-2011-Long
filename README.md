@@ -83,6 +83,7 @@ data6 = cbind(time = data1$time, X1PRNCON= data1$X1PRNCON, X1PRNSOC = data1$X1PR
 # Not including data3, because that data frame is the old race variable no longer needed.
 data1 = cbind(data2, data4, data5, data6)
 head(data1)
+dim(data1)
 write.csv(data1, "ECLSK-2011-Long.csv")
 ```
 Now we are going to test the current Bayesian program with three variables and time as the hierlevel
@@ -91,18 +92,18 @@ Now we are going to test the current Bayesian program with three variables and t
 #------------------------------------------------------------------------------- 
 # Optional generic preliminaries:
 graphics.off() # This closes all of R's graphics windows.
-#rm(list=ls())  # Careful! This clears all of R's memory!
+rm(list=ls())  # Careful! This clears all of R's memory!
 #------------------------------------------------------------------------------- 
 # Load data file and specity column names of x (predictor) and y (predicted):
 setwd("~/Desktop/Extending")
 myData = read.csv(file="ECLSK-2011-Long.csv")
-xName = "X1BMI" ; x2Name = "X1RESREL"; x3Name = "X1SESL"; yName = "X1PRNCON" ; sName="time"
+xName = "X1BMI" ; x2Name = "X1RESREL"; x3Name = "X1SESL"; x4Name = "X1_RACETHP_R"; x5Name = "X1_CHSEX_R"; x6Name = "X1BMI"; x7Name = "X1RESREL"; x8Name = "X1HPARNT"; x9Name = "X1PAR1AGE"; x10Name = ""; yName = "X1PRNCON" ; sName="time"
 fileNameRoot = "HierLinRegressData-Jags-" 
 
 graphFileType = "eps" 
 #------------------------------------------------------------------------------- 
 # Load the relevant model into R's working memory:
-source("Jags-Ymet-XmetSsubj-Dicot-MrobustHierExtend.R")
+source("Jags-Ymet-XmetSsubj-13vars-MrobustHierExtend.R")
 #------------------------------------------------------------------------------- 
 # Generate the MCMC chain:
 #startTime = proc.time()
