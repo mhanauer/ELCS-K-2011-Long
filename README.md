@@ -16,17 +16,19 @@ data1 = cbind(X1PRNCON = data$X1PRNCON, X2PRNCON = data$X2PRNCON, X4PRNCON = dat
 data1 = apply(data1, 2, function(x){ifelse(x == -9, NA, x)})
 data1 = na.omit(data1)
 data1 = as.data.frame(data1)
-dim(data1)      
+dim(data1)
 ```
-Need to create longitudinal data sets.  It is combining the variables but not adding the time stamps correctly.
+Need to create longitudinal data sets.
 ```{r}
-dataLong = reshape(data1, varying = list(c("X1PRNCON", "X2PRNCON", "X4PRNCON"), c("X1PRNSOC", "X2PRNSOC", "X4PRNSOC"), c("X1PRNSAD", "X2PRNSAD", "X4PRNSAD"), c("X1PRNIMP", "X2PRNIMP", "X4PRNIMP"), c("X1PRNAPP", "X2PRNAPP", "X4PRNAPP"), c("X1_RACETHP_R", "X2_RACETHP_R", "X4_RACETHP_R"), c("X1_CHSEX_R", "X2_CHSEX_R", "X4_CHSEX_R"), c("X1BMI", "X2BMI", "X4BMI"), c("X1RESREL", "X2RESREL", "X4RESREL2"), c("X1HPARNT", "X2HPARNT", "X4HPARNT"), c("X1PAR1AGE", "X2PAR1AGE", "X4PAR1AGE_R"), c("X1PAR1RAC", "X2PAR1RAC", "X4PAR1RAC"), c("X1PAR1ED_I", "X2PAR1ED_I", "X4PAR1ED_I"), c("X1LANGST", "X2LANGST", "X4LANGST"), c("X1HTOTAL", "X2HTOTAL", "X4HTOTAL"), c("X1NUMSIB", "X2NUMSIB", "X4NUMSIB"), c("X1SESL", "X2SESL", "X4SESL_I")), v.names = c("X1PRNCON", "X1PRNSOC", "X1PRNSAD", "X1PRNIMP", "X1PRNAPP", "X1_RACETHP_R", "X1_CHSEX_R", "X1BMI", "X1RESREL", "X1HPARNT", "X1PAR1AGE", "X1PAR1RAC", "X1PAR1ED_I", "X1LANGST", "X1HTOTAL", "X1NUMSIB", "X1SESL"), times = c(1,2,3), direction = "long")
-dataLong
+dataLong = reshape(data1, varying = list(c("X1PRNCON", "X2PRNCON", "X4PRNCON"), c("X1PRNSOC", "X2PRNSOC", "X4PRNSOC"), c("X1PRNSAD", "X2PRNSAD", "X4PRNSAD"), c("X1PRNIMP", "X2PRNIMP", "X4PRNIMP"), c("X1PRNAPP", "X2PRNAPP", "X4PRNAPP"), c("X1_RACETHP_R", "X2_RACETHP_R", "X4_RACETHP_R"), c("X1_CHSEX_R", "X2_CHSEX_R", "X4_CHSEX_R"), c("X1BMI", "X2BMI", "X4BMI"), c("X1RESREL", "X2RESREL", "X4RESREL2"), c("X1HPARNT", "X2HPARNT", "X4HPARNT"), c("X1PAR1AGE", "X2PAR1AGE", "X4PAR1AGE_R"), c("X1PAR1RAC", "X2PAR1RAC", "X4PAR1RAC"), c("X1PAR1ED_I", "X2PAR1ED_I", "X4PAR1ED_I"), c("X1LANGST", "X2LANGST", "X4LANGST"), c("X1HTOTAL", "X2HTOTAL", "X4HTOTAL"), c("X1NUMSIB", "X2NUMSIB", "X4NUMSIB"), c("X1SESL", "X2SESL", "X4SESL_I")), v.names = c("X1PRNCON", "X1PRNSOC", "X1PRNSAD", "X1PRNIMP", "X1PRNAPP", "X1_RACETHP_R", "X1_CHSEX_R", "X1BMI", "X1RESREL", "X1HPARNT", "X1PAR1AGE", "X1PAR1RAC", "X1PAR1ED_I", "X1LANGST", "X1HTOTAL", "X1NUMSIB", "X1SESL"), times = c(1,2,4), direction = "long")
+dim(dataLong)
+summary(dataLong$time)
+```
+Now we can make the same transformation like in the previous study.
+```{r}
+
 ```
 
-
-
-Now we can make the same transformation like in the previous study.
 
 
 
