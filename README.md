@@ -6,30 +6,49 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-Here
+Here we are grabbing all the relevant data from the original data set.  I am creating four data sets and then combining them into data1 so that I can keep track of which variables I am including.  I am placing them into data1 instead of data, because I do not want to overwrite data.
 ```{r}
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/Data")
 data = read.csv("ELCS-K-2011.csv", header = TRUE)
-data1 = cbind(X1PRNCON = data$X1PRNCON, X2PRNCON = data$X2PRNCON, X4PRNCON = data$X4PRNCON, X1PRNSOC = data$X1PRNSOC, X2PRNSOC = data$X2PRNSOC, X4PRNSOC = data$X4PRNSOC, X1PRNSAD = data$X1PRNSAD, X2PRNSAD = data$X2PRNSAD, X4PRNSAD = data$X4PRNSAD, X1PRNIMP = data$X1PRNIMP,X2PRNIMP = data$X2PRNIMP,X4PRNIMP = data$X4PRNIMP, X1PRNAPP = data$X1PRNAPP, X2PRNAPP = data$X2PRNAPP, X4PRNAPP = data$X4PRNAPP, X1_RACETHP_R = data$X_RACETHP_R, X2_RACETHP_R = data$X_RACETHP_R, X4_RACETHP_R = data$X_RACETHP_R, X1_CHSEX_R = data$X_CHSEX_R, X2_CHSEX_R = data$X_CHSEX_R, X4_CHSEX_R = data$X_CHSEX_R, X1BMI = data$X1BMI, X2BMI = data$X2BMI, X4BMI = data$X4BMI, X1RESREL = data$X1RESREL, X2RESREL = data$X2RESREL, X4RESREL2 = data$X4RESREL2, X1HPARNT = data$X1HPARNT, X2HPARNT = data$X2HPARNT, X4HPARNT = data$X4HPARNT, X1PAR1AGE = data$X1PAR1AGE, X2PAR1AGE = data$X2PAR1AGE, X4PAR1AGE_R = data$X4PAR1AGE_R, X1PAR1RAC = data$X1PAR1RAC, X2PAR1RAC = data$X2PAR1RAC, X4PAR1RAC = data$X4PAR1RAC, X1PAR1ED_I = data$X12PAR1ED_I, X2PAR1ED_I = data$X12PAR1ED_I, X4PAR1ED_I = data$X4PAR1ED_I, X1LANGST = data$X12LANGST, X2LANGST = data$X12LANGST, X4LANGST = data$X4LANGST, X1HTOTAL = data$X1HTOTAL, X2HTOTAL = data$X2HTOTAL, X4HTOTAL = data$X4HTOTAL, X1NUMSIB = data$X1NUMSIB, X2NUMSIB = data$X2NUMSIB, X4NUMSIB = data$X4NUMSIB, X1SESL = data$X12SESL, X2SESL = data$X12SESL, X4SESL_I = data$X4SESL_I) 
+
+data = as.data.frame(data)
+
+dep = cbind(X1PRNCON = data$X1PRNCON, X2PRNCON = data$X2PRNCON, X4PRNCON = data$X4PRNCON, X1PRNSOC = data$X1PRNSOC, X2PRNSOC = data$X2PRNSOC, X4PRNSOC = data$X4PRNSOC, X1PRNSAD = data$X1PRNSAD, X2PRNSAD = data$X2PRNSAD, X4PRNSAD = data$X4PRNSAD, X1PRNIMP = data$X1PRNIMP,X2PRNIMP = data$X2PRNIMP,X4PRNIMP = data$X4PRNIMP, X1PRNAPP = data$X1PRNAPP, X2PRNAPP = data$X2PRNAPP, X4PRNAPP = data$X4PRNAPP)
+
+class = cbind(X1TCHPER = data$X1TCHPER, X2TCHPER = data$X2TCHPER, X4TCHPER = data$X4TCHPER, X1TCHEXT = data$X1TCHEXT,X2TCHEXT = data$X2TCHEXT, X4TCHEXT = data$X4TCHEXT, X1TCHINT = data$X1TCHINT, X2TCHINT = data$X2TCHINT, X4TCHINT = data$X4TCHINT, X1ATTNFS = data$X1ATTNFS, X2ATTNFS = data$X2ATTNFS, X4ATTNFS = data$X4ATTNFS, X1INBCNT = data$X1INBCNT, X2INBCNT = data$X2INBCNT, X4INBCNT = data$X4INBCNT, X2CNFLCT = data$X2CNFLCT, X4CNFLCT = data$X4CNFLCT, X12CHGTCH = data$X12CHGTCH, X34CHGTCH = data$X34CHGTCH)
+
+school = cbind(X12CHGSCH = data$X12CHGSCH, X1LOCALE = data$X1LOCALE, X2LOCALE = data$X2LOCALE, X4LOCALE = data$X4LOCALE, X_DISTPOV = data$X_DISTPOV, X4DISTPOV = data$X4DISTPOV, X1PUBPRI = data$X1PUBPRI, X2PUBPRI = data$X2PUBPRI, X4PUBPRI = data$X4PUBPRI, X2LOWGRD = data$X2LOWGRD, X4LOWGRD = data$X4LOWGRD, X2KENRLS = data$X2KENRLS, X4ENRLS = data$X4ENRLS, X2KRCETH = data$X2KRCETH, X4RCETH = data$X4RCETH) 
+
+home = cbind(X1RESREL = data$X1RESREL, X2RESREL = data$X2RESREL, X4RESREL2 = data$X4RESREL2,X1HPARNT = data$X1HPARNT, X2HPARNT = data$X2HPARNT, X4HPARNT = data$X4HPARNT, X1PAR1AGE = data$X1PAR1AGE, X2PAR1AGE = data$X2PAR1AGE, X4PAR1AGE_R = data$X4PAR1AGE_R, X1PAR1RAC = data$X1PAR1RAC, X2PAR1RAC = data$X2PAR1RAC, X4PAR1RAC = data$X4PAR1RAC, X1PAR1ED_I = data$X1PAR1ED_I, X2PAR1ED_I = data$X2PAR1ED_I, X4PAR1ED_I, data$X4PAR1ED_I, X1PAR1EMP = data$X1PAR1EMP, X4PAR1EMP_I = data$X4PAR1EMP_I, X1PAR1SCR_I = data$X1PAR1SCR_I, X4PAR1SCR_I = data$X4PAR1SCR_I, X1HTOTAL = data$X1HTOTAL, X2HTOTAL = data$X2HTOTAL, X4HTOTAL = data$X4HTOTAL, X1PRIMNW = data$X1PRIMNW, X2POVTY = data$X2POVTY, X4POVTY_I = data$X4POVTY_I, X2FSADRA2 = data$X2FSADRA2, X4FSADRA2 = data$X4FSADRA2, X12LANGST = data$X12LANGST, X4LANGST = data$X4LANGST)
+
+ageControl = cbind(X1KAGE_R = data$X1KAGE_R, X2KAGE_R = data$X2KAGE_R, X4AGE = data$X4AGE)
+
+data1 = cbind(dep, class, school, home, age)
               
 data1 = apply(data1, 2, function(x){ifelse(x == -9, NA, x)})
 data1 = na.omit(data1)
 data1 = as.data.frame(data1)
 dim(data1)
 ```
-Need to take a sample of 400 before you create the long data set
+Need to take a sample of 100 before you create the long data set and see how long it will take
 ```{r}
 set.seed(12345)
-index = sample(1:nrow(data1), 400, replace = FALSE)
+index = sample(1:nrow(data1), 100, replace = FALSE)
 data1 = data1[index, ]
 
 ```
 
 
-Need to create longitudinal data sets.
+Need to create longitudinal data sets.  Need to create the seperate for variables that have all three time points, variables with two time points, and variables with one time point.  Also need to split up the variables by the time points that they do have.  Some variables have time point one and two while others have two and four. 
 ```{r}
 data1 = reshape(data1, varying = list(c("X1PRNCON", "X2PRNCON", "X4PRNCON"), c("X1PRNSOC", "X2PRNSOC", "X4PRNSOC"), c("X1PRNSAD", "X2PRNSAD", "X4PRNSAD"), c("X1PRNIMP", "X2PRNIMP", "X4PRNIMP"), c("X1PRNAPP", "X2PRNAPP", "X4PRNAPP"), c("X1_RACETHP_R", "X2_RACETHP_R", "X4_RACETHP_R"), c("X1_CHSEX_R", "X2_CHSEX_R", "X4_CHSEX_R"), c("X1BMI", "X2BMI", "X4BMI"), c("X1RESREL", "X2RESREL", "X4RESREL2"), c("X1HPARNT", "X2HPARNT", "X4HPARNT"), c("X1PAR1AGE", "X2PAR1AGE", "X4PAR1AGE_R"), c("X1PAR1RAC", "X2PAR1RAC", "X4PAR1RAC"), c("X1PAR1ED_I", "X2PAR1ED_I", "X4PAR1ED_I"), c("X1LANGST", "X2LANGST", "X4LANGST"), c("X1HTOTAL", "X2HTOTAL", "X4HTOTAL"), c("X1NUMSIB", "X2NUMSIB", "X4NUMSIB"), c("X1SESL", "X2SESL", "X4SESL_I")), v.names = c("X1PRNCON", "X1PRNSOC", "X1PRNSAD", "X1PRNIMP", "X1PRNAPP", "X1_RACETHP_R", "X1_CHSEX_R", "X1BMI", "X1RESREL", "X1HPARNT", "X1PAR1AGE", "X1PAR1RAC", "X1PAR1ED_I", "X1LANGST", "X1HTOTAL", "X1NUMSIB", "X1SESL"), times = c(1,2,4), direction = "long")
 dim(data1)
+
+three
+firstTwo
+lastTwo
+one
+
 summary(data1$time)
 sum(is.na(data1))
 ```
