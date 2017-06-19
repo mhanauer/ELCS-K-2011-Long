@@ -119,9 +119,10 @@ rm(list=ls())  # Careful! This clears all of R's memory!
 #------------------------------------------------------------------------------- 
 # Load data file and specity column names of x (predictor) and y (predicted):
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/ELCSK2011Long/Data")
+setwd("~/Desktop")
 myData = read.csv(file="ECLSK-2011-Long.csv")
 head(myData)
-x10Name = "X1RESREL"; x11Name = "X1HPARNT"; x12Name = "X1LANGST"; x13Name = "X1PAR1AGE"; x14Name = "X1PAR1RAC"; x15Name = "X1HTOTAL"; x16Name = "X1KAGE_R"; x17Name = "X1PAR1ED_I"; yName = "X1PRNCON" ; sName="time"
+xName = "X1RESREL" ; x2Name = "X1HPARNT"; x3Name = "X1LANGST"; x4Name = "X1PAR1AGE"; x5Name = "parrace"; x6Name = "X1HTOTAL"; x7Name = "X1KAGE_R"; x8Name = "X1PAR1ED_I"; yName = "X1PRNCON" ; sName="time"
 fileNameRoot = "Long1-" 
 
 
@@ -133,7 +134,7 @@ source("ECLS-K-2011-LongLow.R")
 #------------------------------------------------------------------------------- 
 # Generate the MCMC chain:
 #startTime = proc.time()
-mcmcCoda = genMCMC( data=myData , xName=xName ,x2Name = x2Name,x3Name = x3Name, x4Name=x4Name ,x5Name = x5Name, x6Name = x6Name, x7Name=x7Name ,x8Name = x8Name, x9Name = x9Name, x10Name=x10Name ,x11Name = x11Name, x12Name = x12Name, x13Name = x13Name, x14Name = x14Name, x15Name = x15Name, x16Name = x16Name, x17Name = x17Name, yName=yName , sName=sName ,
+mcmcCoda = genMCMC( data=myData , xName=xName ,x2Name = x2Name,x3Name = x3Name, x4Name=x4Name ,x5Name = x5Name, x6Name = x6Name, x7Name=x7Name ,x8Name = x8Name, yName=yName , sName=sName ,
                     numSavedSteps=20000 , thinSteps=15 , saveName=fileNameRoot )
 
 #------------------------------------------------------------------------------- 
@@ -154,7 +155,7 @@ rm(list=ls())  # Careful! This clears all of R's memory!
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/ELCSK2011Long/Data")
 myData = read.csv(file="ECLSK-2011-Long.csv")
 head(myData)
-xName = "X1TCHPER" ; x2Name = "X1TCHEXT"; x3Name = "X1TCHINT"; x4Name = "X1ATTNFS"; x5Name = "X1INBCNT"; x6Name = "city"; x7Name = "suburb"; x8Name = "rural"; x9Name = "public"; x10Name = "X1RESREL"; x11Name = "X1HPARNT"; x12Name = "X1LANGST"; x13Name = "X1PAR1AGE"; x14Name = "X1PAR1RAC"; x15Name = "X1HTOTAL"; x16Name = "X1KAGE_R"; x17Name = "X1PAR1ED_I"; yName = "X1PRNSOC" ; sName="time"
+xName = "X1RESREL" ; x2Name = "X1HPARNT"; x3Name = "X1LANGST"; x4Name = "X1PAR1AGE"; x5Name = "parrace"; x6Name = "X1HTOTAL"; x7Name = "X1KAGE_R"; x8Name = "X1PAR1ED_I"; yName = "X1PRNSOC" ; sName="time"
 fileNameRoot = "Long2-" 
 
 
@@ -188,7 +189,7 @@ rm(list=ls())  # Careful! This clears all of R's memory!
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/ELCSK2011Long/Data")
 myData = read.csv(file="ECLSK-2011-Long.csv")
 head(myData)
-xName = "X1TCHPER" ; x2Name = "X1TCHEXT"; x3Name = "X1TCHINT"; x4Name = "X1ATTNFS"; x5Name = "X1INBCNT"; x6Name = "city"; x7Name = "suburb"; x8Name = "rural"; x9Name = "public"; x10Name = "X1RESREL"; x11Name = "X1HPARNT"; x12Name = "X1LANGST"; x13Name = "X1PAR1AGE"; x14Name = "X1PAR1RAC"; x15Name = "X1HTOTAL"; x16Name = "X1KAGE_R"; x17Name = "X1PAR1ED_I"; yName = "X1PRNSAD" ; sName="time"
+xName = "X1RESREL" ; x2Name = "X1HPARNT"; x3Name = "X1LANGST"; x4Name = "X1PAR1AGE"; x5Name = "parrace"; x6Name = "X1HTOTAL"; x7Name = "X1KAGE_R"; x8Name = "X1PAR1ED_I"; yName = "X1PRNSAD" ; sName="time"
 fileNameRoot = "Long3-" 
 
 
@@ -222,7 +223,7 @@ rm(list=ls())  # Careful! This clears all of R's memory!
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/ELCSK2011Long/Data")
 myData = read.csv(file="ECLSK-2011-Long.csv")
 head(myData)
-xName = "X1TCHPER" ; x2Name = "X1TCHEXT"; x3Name = "X1TCHINT"; x4Name = "X1ATTNFS"; x5Name = "X1INBCNT"; x6Name = "city"; x7Name = "suburb"; x8Name = "rural"; x9Name = "public"; x10Name = "X1RESREL"; x11Name = "X1HPARNT"; x12Name = "X1LANGST"; x13Name = "X1PAR1AGE"; x14Name = "X1PAR1RAC"; x15Name = "X1HTOTAL"; x16Name = "X1KAGE_R"; x17Name = "X1PAR1ED_I"; yName = "X1PRNIMP" ; sName="time"
+xName = "X1RESREL" ; x2Name = "X1HPARNT"; x3Name = "X1LANGST"; x4Name = "X1PAR1AGE"; x5Name = "parrace"; x6Name = "X1HTOTAL"; x7Name = "X1KAGE_R"; x8Name = "X1PAR1ED_I"; yName = "X1PRNIMP" ; sName="time"
 fileNameRoot = "Long4-" 
 
 
@@ -256,7 +257,7 @@ rm(list=ls())  # Careful! This clears all of R's memory!
 setwd("~/Google Drive/PARCS/Projects/ECLSK2011/ELCSK2011Long/Data")
 myData = read.csv(file="ECLSK-2011-Long.csv")
 head(myData)
-xName = "X1TCHPER" ; x2Name = "X1TCHEXT"; x3Name = "X1TCHINT"; x4Name = "X1ATTNFS"; x5Name = "X1INBCNT"; x6Name = "city"; x7Name = "suburb"; x8Name = "rural"; x9Name = "public"; x10Name = "X1RESREL"; x11Name = "X1HPARNT"; x12Name = "X1LANGST"; x13Name = "X1PAR1AGE"; x14Name = "X1PAR1RAC"; x15Name = "X1HTOTAL"; x16Name = "X1KAGE_R"; x17Name = "X1PAR1ED_I"; yName = "X1PRNAPP" ; sName="time"
+xName = "X1RESREL" ; x2Name = "X1HPARNT"; x3Name = "X1LANGST"; x4Name = "X1PAR1AGE"; x5Name = "parrace"; x6Name = "X1HTOTAL"; x7Name = "X1KAGE_R"; x8Name = "X1PAR1ED_I"; yName = "X1PRNAPP" ; sName="time"
 fileNameRoot = "Long5-" 
 
 
@@ -277,5 +278,3 @@ summaryInfo = smryMCMC( mcmcCoda , saveName=fileNameRoot )
 show(summaryInfo)
 gelman.diag(mcmcCoda)
 ```
-
-
