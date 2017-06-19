@@ -44,7 +44,6 @@ dim(data1)
 
 Here we create the data the long data. Instead of erasing everything, I just kept it.  Only the data set three will work, because we cannot have missing covariates.
 ```{r}
-
 data1 = reshape(data1, varying = list(c("X1PRNCON", "X2PRNCON", "X4PRNCON"), c("X1PRNSOC","X2PRNSOC","X4PRNSOC"),c("X1PRNSAD","X2PRNSAD","X4PRNSAD"),c("X1PRNIMP","X2PRNIMP","X4PRNIMP"),c("X1PRNAPP","X2PRNAPP","X4PRNAPP"), c("X1TCHPER", "X2TCHPER", "X4TCHPER"), c("X1TCHEXT", "X2TCHEXT", "X4TCHEXT"),c("X1TCHINT", "X2TCHINT", "X4TCHINT"), c("X1ATTNFS", "X2ATTNFS", "X4ATTNFS"), c("X1INBCNT", "X2INBCNT", "X4INBCNT"), c("X1LOCALE", "X2LOCALE", "X4LOCALE"), c("X1PUBPRI", "X2PUBPRI", "X4PUBPRI"), c("X1RESREL", "X2RESREL", "X4RESREL2"), c("X1HPARNT", "X2HPARNT", "X4HPARNT"), c("X1PAR1AGE", "X2PAR1AGE", "X4PAR1AGE_R"), c("X1PAR1RAC", "X2PAR1RAC", "X4PAR1RAC"), c("X1HTOTAL", "X2HTOTAL", "X4HTOTAL"), c("X1KAGE_R", "X2KAGE_R", "X4AGE"), c("X1PAR1ED_I", "X2PAR1ED_I", "X4PAR1ED_I"), c("X1LANGST", "X2LANGST", "X4LANGST")), times = c(1,2,4), direction = "long")
 data1 = as.data.frame(data1)
 dim(data1)
@@ -95,10 +94,11 @@ parrace = as.data.frame(parrace)
 
 data1 = cbind( X1PRNCON= data1$X1PRNCON, X1PRNSOC=  data1$X1PRNSOC, X1PRNSAD = data1$X1PRNSAD, X1PRNIMP= data1$X1PRNIMP,  X1PRNAPP= data1$X1PRNAPP, X1TCHPER = data1$X1TCHPER, X1TCHEXT= data1$X1TCHEXT, X1TCHINT = data1$X1TCHINT, X1ATTNFS = data1$X1ATTNFS, X1INBCNT= data1$X1INBCNT, city = city, suburb = suburb, rural = rural, public = public, X1RESREL = data2$X1RESREL, X1HPARNT = data2$X1HPARNT, X1LANGST= data2$X1LANGST, X1PAR1AGE =  data1$X1PAR1AGE, X1PAR1RAC = parrace, X1HTOTAL = data1$X1HTOTAL, X1KAGE_R = data1$X1KAGE_R, X1PAR1ED_I = data1$X1PAR1ED_I, time = data1$time)
 data1 = as.data.frame(data1)
-dim(data1)
-
 head(data1)
-write.csv(data1, "ECLSK-2011-Long.csv")
+data1$X1RESREL
+data2 = cbind(X1RESREL = data1$X1RESREL, X1HPARNT = data1$X1HPARNT, X1PAR1AGE = data1$X1PAR1AGE, X1PAR1RAC = data1$X1PAR1RAC, X1PAR1ED_I = data1$X1PAR1ED_I, X1HTOTAL = data1$X1HTOTAL, X1LANGST = data1$X1LANGST, X1KAGE_R = data1$X1KAGE_R, time = data1$time)
+
+write.csv(data2, "ECLSK-2011-Long.csv")
 ```
 
 Now we have a model for the SC variable
