@@ -87,12 +87,12 @@ head(data2)
 
 # This is seperate, X1PAR1RAC
 
-parrace = ifelse(data1$X1PAR1RAC == 1,0,1)
-names(parrace) = c("X1PAR1RAC")
-parrace = as.data.frame(parrace)
+X1PAR1RAC = ifelse(data1$X1PAR1RAC == 1,0,1)
+names(X1PAR1RAC) = c("X1PAR1RAC")
+X1PAR1RAC = as.data.frame(X1PAR1RAC)
 
 
-data1 = cbind( X1PRNCON= data1$X1PRNCON, X1PRNSOC=  data1$X1PRNSOC, X1PRNSAD = data1$X1PRNSAD, X1PRNIMP= data1$X1PRNIMP,  X1PRNAPP= data1$X1PRNAPP, X1TCHPER = data1$X1TCHPER, X1TCHEXT= data1$X1TCHEXT, X1TCHINT = data1$X1TCHINT, X1ATTNFS = data1$X1ATTNFS, X1INBCNT= data1$X1INBCNT, city = city, suburb = suburb, rural = rural, public = public, X1RESREL = data2$X1RESREL, X1HPARNT = data2$X1HPARNT, X1LANGST= data2$X1LANGST, X1PAR1AGE =  data1$X1PAR1AGE, X1PAR1RAC = parrace, X1HTOTAL = data1$X1HTOTAL, X1KAGE_R = data1$X1KAGE_R, X1PAR1ED_I = data1$X1PAR1ED_I, time = data1$time)
+data1 = cbind( X1PRNCON= data1$X1PRNCON, X1PRNSOC=  data1$X1PRNSOC, X1PRNSAD = data1$X1PRNSAD, X1PRNIMP= data1$X1PRNIMP,  X1PRNAPP= data1$X1PRNAPP, X1TCHPER = data1$X1TCHPER, X1TCHEXT= data1$X1TCHEXT, X1TCHINT = data1$X1TCHINT, X1ATTNFS = data1$X1ATTNFS, X1INBCNT= data1$X1INBCNT, city = city, suburb = suburb, rural = rural, public = public, X1RESREL = data2$X1RESREL, X1HPARNT = data2$X1HPARNT, X1LANGST= data2$X1LANGST, X1PAR1AGE =  data1$X1PAR1AGE, X1PAR1RAC = X1PAR1RAC, X1HTOTAL = data1$X1HTOTAL, X1KAGE_R = data1$X1KAGE_R, X1PAR1ED_I = data1$X1PAR1ED_I, time = data1$time)
 data1 = as.data.frame(data1)
 head(data1)
 data1$X1RESREL
